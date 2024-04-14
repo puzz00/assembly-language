@@ -163,3 +163,65 @@ Two processors which use different ISAs will interpret the same machine code dif
 >[!NOTE]
 >One type of ISA can have different syntax for it - for example x86 architecture can use *Intel* syntax such as `add rax, 1` *and* it can have *AT&T* syntax which would use `addb $0x1,%rax`
 
+### Instruction Set Architecture
+
+Instruction Set Architecture is built into CPUs. It mostly consists of:
+
+- Instructions
+- Registers
+- Memory Addresses
+- Data Types
+
+| Instructions | Registers | Memory Addresses | Data Types |
+| --- | --- | --- | --- |
+| Instructions to be processed | Temporary storage of instructions, addresses and operands | Address where data or instructions are - can point to registers or other memory | Type of stored data |
+
+The two most common ISAs are:
+
+- Complex Instruction Set Computer which is used by Intel and AMD processors
+- Reduced Instruction Set Computer which is used by ARM and Apple processors
+
+#### CISC
+
+This architecture uses more complex instructions so fewer instructions are needed in the assembly language. This means that the processor itself is more complex and therefore uses more power.
+
+An instruction such as `add rax, rbx` can be done in one instruction cycle on a CISC processor - it does not need the instruction to be broken into smaller pieces by the code. The instruction is more complex, so the instruction cycle takes more clock cycles - this leads to more power being used and heat created.
+
+#### RISC
+
+This architecture uses more simple instructions and therefore requires more instructions to be coded in the assembly language. RISC processors are therefore more simple whilst the code for them is longer. RISC processors use less power and create less heat - this makes them more suitable for mobile devices which rely on battery power.
+
+Since the instructions are more simple, they will take the same number of clock cycles - precisely one clock cycle for each instruction cycle.
+
+>[!NOTE]
+>Currently we will encounter CISC processors most of the time but with the rise of mobile devices RISC is increasingly important
+
+### Registers, Addresses and Data Types
+
+#### Registers
+
+The registers in a CPU are the fastest memory in a computer. They can only hold a small amount of data, however. The registers are used by the CPU to get and store data on a temporary basis.
+
+The width of the registers is what gives us 32 bit or 64 bit processors.
+
+There are different types of register in a CPU. We will focus on the *instruction pointer* - EIP - and eight general purpose registers:
+
+| x86 Name | Name | Purpose |
+| --- | --- | --- |
+| EAX | Accumulator | Used in arithmetic operations |
+| ECX | Counter | Used in shift / rotate instructions and loops |
+| EDX | Data | Used in arithmetic operations and I / O |
+| EBX | Base | Used to point to data |
+| ESP | Stack Pointer | Points to the top of the stack |
+| EBP | Base Pointer | Points to the base of the stack |
+| ESI | Source Index | Points to the source in stream operation |
+| EDI | Destination | Points to the destination in stream operation |
+
+>[!IMPORTANT]
+>The EIP - instruction pointer - is *very* important since it controls the program execution and holds the address of the next instruction to be executed
+
+##### Sub-Registers
+
+Each register has sub-registers which contain lower bits - these can be used and accessed seperately using a specific naming convention which is based on the history of the development of CPUs.
+
+Older 8 bit CPUs divided a 16 bit register into two parts - the *Low Byte* and the *High Byte* - named with an *L* or *H* at the end of the register name such as *AL* or *AH* for the *accumulator*.
